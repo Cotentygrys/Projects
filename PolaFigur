@@ -1,0 +1,41 @@
+#Oblicz pole figur
+
+import math
+
+print("Dostępne figury:")
+print('kwadrat\nprostokat\nkolo\ntrojkat')
+figura = str(input('Podaj figurę, której pole chciałbyś policzyć'))
+
+def pole(figura):
+#Kwadrat
+    if figura.lower() == 'kwadrat':
+        bok = float(input('Podaj długość boku kwadratu, którego pole chciałbyś wyliczyć'))
+        pole1=round(bok*bok, 2)
+        roundbok = round(bok, 2)
+        print('Pole kwadratu o boku {0} cm to {1} cm^2'.format(roundbok,pole1))
+#Prostokat
+    if figura.lower() == 'prostokat':
+        bok1 = float(input('Podaj długość 1 boku prostokąta, którego pole chciałbyś wyliczyć'))
+        bok2 = float(input('Podaj długość 2 boku prostokąta, którego pole chciałbyś wyliczyć'))
+        pole2=round((bok1)*(bok2), 2)
+        roundbok1 = round(bok1, 2)
+        roundbok2 = round(bok2, 2)
+        print('Pole prostokąta o bokach {0} cm oraz {1) cm to {2} cm^2'.format(roundbok1,roundbok2, pole2))
+#Trojkat
+    if figura.lower() == 'trojkat':
+        podstawa = float(input('Podaj długość podstawy trójkąta, którego pole chciałbyś wyliczyć'))
+        wysokosc = float(input('Podaj wysokość trójkąta, którego pole chciałbyś wyliczyć'))
+        pole3=round((podstawa*wysokosc)/2, 2)
+        roundpodstawa = round(podstawa, 2)
+        roundwysokosc = round(wysokosc, 2)
+        print('Pole trójkąta o podstawie {0} cm oraz wysokości {1) cm to {2} cm^2'.format(roundpodstawa,roundwysokosc, pole3))
+#Kolo
+    if figura.lower() == 'kolo':
+        promien = float(input('Podaj długość promienia koła, którego pole chciałbyś wyliczyć'))
+        pitagoras = round(math.pi, 2)
+        pole4=round((promien**2)*pitagoras, 2)
+        roundpromien = round(promien, 2)
+        print('Pole koła o promieniu {0} cm  to {1} cm^2'.format(roundpromien,pole4))
+
+pole(figura)
+
