@@ -1,0 +1,91 @@
+#Przelicznik walut
+print('Przelicznik walut na dzień 30.06.2021')
+print('Dostępne waluty:')
+print('EUR\nUSD\nPLN\nGBP\nCHF')
+
+waluta1 = input('Podaj walutę, którą chcesz przeliczyć [W powyższym formacie]')
+waluta2 = input ('Podaj na jaką walutę chcesz przeliczyć [W powyższym formacie]')
+kwotadoprzeliczenia = float(input('Podaj kwotę, którą chciałbyś przeliczyć [z kropką zamiast przecinka]'))
+
+def przelicznik(waluta1, waluta2):
+    kwota = round(kwotadoprzeliczenia, 2)
+    #EUR jako 1 waluta
+    if waluta1.lower()=='eur' and waluta2.lower()=='eur':
+        print('{0} Euro to {0} Euro.'.format(kwota))
+    elif waluta1.lower()=='eur' and waluta2.lower()=='usd':
+        eurusd=round(kwota*1.19, 2)
+        print('{0} Euro to {1} Dolarów.'.format(kwota, eurusd))
+    elif waluta1.lower()=='eur' and waluta2.lower()=='pln':
+        eurpln=round(kwota*4.51, 2)
+        print('{0} Euro to {1} Złotych.'.format(kwota, eurpln))
+    elif waluta1.lower()=='eur' and waluta2.lower()=='gbp':
+        eurgbp=round(kwota*0.86, 2)
+        print('{0} Euro to {1} Funtów.'.format(kwota, eurgbp))
+    elif waluta1.lower()=='eur' and waluta2.lower()=='chf':
+        eurchf=round(kwota*1.1, 2)
+        print('{0} Euro to {1} Franków.'.format(kwota, eurchf))
+    #USD jako 1 waluta
+    elif waluta1.lower()=='usd' and waluta2.lower()=='usd':
+        print('{0} Dolarów to {0} Dolarów.'.format(kwota))
+    elif waluta1.lower()=='usd' and waluta2.lower()=='eur':
+        usdeur=round(kwota*0.84, 2)
+        print('{0} Dolarów to {1} Euro.'.format(kwota, usdeur))
+    elif waluta1.lower()=='usd' and waluta2.lower()=='pln':
+        usdpln=round(kwota*3.8, 2)
+        print('{0} Dolarów to {1} Złotych.'.format(kwota, usdpln))
+    elif waluta1.lower()=='usd' and waluta2.lower()=='gbp':
+        usdgbp=round(kwota*0.72, 2)
+        print('{0} Dolarów to {1} Funtów.'.format(kwota, usdgbp))
+    elif waluta1.lower()=='usd' and waluta2.lower()=='chf':
+        usdchf=round(kwota*0.92, 2)
+        print('{0} Dolarów to {1} Franków.'.format(kwota, usdchf))
+    #PLN jako 1 waluta
+    elif waluta1.lower()=='pln' and waluta2.lower()=='pln':
+        print('{0} Złotych to {0} Złotych.'.format(kwota))
+    elif waluta1.lower()=='pln' and waluta2.lower()=='eur':
+        plneur=round(kwota*0.22, 2)
+        print('{0} Złotych to {1} Euro.'.format(kwota, plneur))
+    elif waluta1.lower()=='pln' and waluta2.lower()=='usd':
+        plnusd=round(kwota*0.26, 2)
+        print('{0} Złotych to {1} Dolarów.'.format(kwota, plnusd))
+    elif waluta1.lower()=='pln' and waluta2.lower()=='gbp':
+        plngbp=round(kwota*0.19, 2)
+        print('{0} Złotych to {1} Dolarów.'.format(kwota, plngbp))
+    elif waluta1.lower()=='pln' and waluta2.lower()=='chf':
+        plnchf=round(kwota*0.24, 2)
+        print('{0} Złotych to {1} Dolarów.'.format(kwota, plnchf))
+    #GBP jako 1 waluta
+    elif waluta1.lower()=='gbp' and waluta2.lower()=='gbp':
+        print('{0} Funtów to {0} Funtów.'.format(kwota))
+    elif waluta1.lower() == 'gbp' and waluta2.lower() == 'eur':
+        gbpeur =round(kwota * 1.17, 2)
+        print('{0} Funtów to {1} Euro.'.format(kwota, gbpeur))
+    elif waluta1.lower() == 'gbp' and waluta2.lower() == 'usd':
+        gbpusd =round(kwota * 1.39,2)
+        print('{0} Funtów to {1} Dolarów.'.format(kwota, gbpusd))
+    elif waluta1.lower() == 'gbp' and waluta2.lower() == 'pln':
+        gbppln =round(kwota * 5.26, 2)
+        print('{0} Funtów to {1} Złotych.'.format(kwota, gbppln))
+    elif waluta1.lower() == 'gbp' and waluta2.lower() == 'chf':
+        gbpchf =round(kwota * 1.28, 2)
+        print('{0} Funtów to {1} Franków.'.format(kwota, gbpchf))
+    #CHF jako 1 waluta
+    elif waluta1.lower()=='chf' and waluta2.lower()=='chf':
+        print('{0} Franków to {0} Franków.'.format(kwota))
+    elif waluta1.lower() == 'chf' and waluta2.lower() == 'eur':
+        chfeur = round(kwota * 0.91, 2)
+        print('{0} Franków to {1} Euro.'.format(kwota, chfeur))
+    elif waluta1.lower() == 'chf' and waluta2.lower() == 'usd':
+        chfusd = round(kwota * 1.08, 2)
+        print('{0} Franków to {1} Dolarów.'.format(kwota, chfusd))
+    elif waluta1.lower() == 'chf' and waluta2.lower() == 'pln':
+        chfpln = round(kwota * 4.12, 2)
+        print('{0} Franków to {1} Złotych.'.format(kwota, chfpln))
+    elif waluta1.lower() == 'chf' and waluta2.lower() == 'gbp':
+        chfgbp = round(kwota * 0.78, 2)
+        print('{0} Franków to {1} Funtów.'.format(kwota, chfgbp))
+    else:
+        print('Któraś z wartości została podana niepoprawnie - przewalutowanie nie mogło się odbyć')
+
+przelicznik(waluta1,waluta2)
+
