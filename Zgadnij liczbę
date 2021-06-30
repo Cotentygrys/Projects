@@ -1,0 +1,24 @@
+#Gra w zgadywanie liczby z przedziału od 1-100
+#program ma za zadanie wylosować liczbę, a użytkownik ma ją zgadnąć.
+#Jeśli użytkownik poda mniejszą niż wylosowana - program wypisuje tekst "za mała liczba"
+#Jeśli poda większą wypisuje "za duża liczba".
+
+from random import randint
+
+i = randint(1, 100)
+count=1
+
+guess = input('Zgadnij liczbę z przedziału od 1 do 100')
+
+if guess.isnumeric()==True:
+    while int(guess) != i:
+        if int(guess)>i:
+            guess = input('Podana liczba jest za duża, podaj inną:')
+            count +=1
+        else:
+            guess = input('Podana liczba jest za mała, podaj inną:')
+            count += 1
+    else:
+            print('Gratulacje! Zgadłeś za {} razem'.format(count))
+else:
+    raise ValueError ('Niestety nie została podana liczba, spróbuj ponownie')
