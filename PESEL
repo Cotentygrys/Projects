@@ -1,0 +1,36 @@
+###############################################
+#                   PESEL 3.0                 #
+###############################################
+
+#Zmienna początkowa
+PESEL = input('Podaj swój numer PESEL')
+
+#PESEL_Int_Error
+if PESEL.isnumeric() == True:
+
+#PESEL_Lenght_Error
+    while len(PESEL) != 11:
+        if len(PESEL)>11:
+            print('PESEL jest za długi')
+            PESEL = input('Podaj swój numer PESEL')
+        elif len(PESEL)<11:
+            print('PESEL za krótki')
+            PESEL = input('Podaj swój numer PESEL')
+else:
+    raise ValueError ('PESEL może składać się tylko z cyfr!')
+
+#PESEL
+print('Twój numer PESEL to ', PESEL)
+print('Mówi to o Tobie tyle, że: ')
+
+#PŁEĆ
+PLEC=int(PESEL[9])
+if PLEC%2==1:
+    print('1) Jesteś mężczyzną')
+else:
+    print('1) Jesteś kobietą')
+
+#WIEK
+WIEK = int(PESEL[0]+PESEL[1])
+LATA = (100 - WIEK) + 21
+print('2) Masz {} lat'.format(LATA))
