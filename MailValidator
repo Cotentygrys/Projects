@@ -1,0 +1,9 @@
+#Validator e-mail
+#Sprawdza czy podany adres e-mail spełnia jakieś konkretne wymogi
+
+mailspr = input('Podaj adres e-mail')
+
+if re.match(r'^([A-Za-z0-9]+|[A-Za-z0-9][A-Za-z0-9\.-]+[A-Za-z0-9])@([A-Za-z0-9]+|[A-Za-z0-9-\.]+[A-Za-z0-9])\.[A-Za-z]+$', mailspr):
+    print('E-mail poprawny')
+else:
+    print('Email niepoprawny')
