@@ -1,0 +1,143 @@
+import random
+from words import word_list
+
+def get_word():
+    guess_word = random.choice(word_list) #Return a random element from a list
+    return guess_word.upper()
+
+def hangman_game(word):
+    hide_word = '_' * len(word)
+    list_hide_word = list(hide_word)
+    errors = 0
+    guessed_letters = []
+    guessed_words = []
+    print('Zagraj w wisielca!')
+    print(hide_word)
+    print(display_hangman(errors))
+    won = False
+
+    while not won and errors<6:
+        guessed_letter = input('Podaj literę bądź słowo').upper()
+        if len(guessed_letter)==1 and guessed_letter.isalpha():
+            if guessed_letter in guessed_letters:
+                print('Podana litera była już sprawdzana, podaj inną!')
+            elif guessed_letter in word:
+                print('Gratulacje! litera', guessed_letter.upper(), 'znajduje się w szukanym wyrazie')
+                guessed_letters.append(guessed_letter)
+
+                indices = [i for i, letter in enumerate(word) if letter == guessed_letter]
+                for index in indices:
+                    list_hide_word[index] = guessed_letter
+                hide_word = "".join(list_hide_word)
+                if "_" not in list_hide_word:
+                    won = True
+
+            else:
+                print('Niestety litera', guessed_letter.upper(), 'nie znajduje się w szukanym wyrazie')
+                guessed_letters.append(guessed_letter)
+                errors += 1
+        elif len(guessed_letter)==len(word) and guessed_letter.isalpha():
+            if guessed_letter in guessed_words:
+                print('Już zgadywałeś to słowo')
+            elif guessed_letter == word:
+                guessed_words.append(guessed_letter)
+                won = True
+            else:
+                print('Słowo niepoprawne, spróbuj ponownie!')
+                guessed_words.append(guessed_letter)
+        else:
+            print('Strzał nie poprawny! Spróbuj ponownie.')
+
+        print(hide_word)
+        print(display_hangman(errors))
+        print('użyte litery:', guessed_letters)
+
+    if won:
+        print('Gratulacje, udało Ci się zgadnąć słowo!')
+    else:
+        print('Niestety nie udało Ci się zgadnąć szukanego słowa. Było nim:', word)
+
+
+def display_hangman(errors):
+    stages = [
+    # initial
+    """
+                   --------
+                   |      |
+                   |      
+                   |    
+                   |      
+                   |     
+                   -
+                """,
+    #1 error
+        """
+                         --------
+                         |      |
+                         |      O
+                         |    
+                         |      
+                         |     
+                         -
+                      """,
+        # 2 error
+        """
+                          --------
+                          |      |
+                          |      O
+                          |      |
+                          |      |
+                          |     
+                          -
+                       """,
+        # 3 error
+        """
+             --------
+             |      |
+             |      O
+             |     \|
+             |      |
+             |     
+             -
+          """,
+        # 4 error
+        """
+                           --------
+                           |      |
+                           |      O
+                           |     \|/
+                           |      |
+                           |      
+                           -
+                        """,
+        #5 error
+        """
+           --------
+           |      |
+           |      O
+           |     \|/
+           |      |
+           |     / 
+           -
+        """,
+        #6error - game over
+        """
+           --------
+           |      |
+           |      O
+           |     \|/
+           |      |
+           |      /\\
+           -
+        """]
+    return stages[errors]
+
+def main():
+    word = get_word()
+    hangman_game(word)
+    while input("Chcesz zagrać ponownie? (T/N) ").upper() == "T":
+        word = get_word()
+        hangman_game(word)
+
+if __name__ == '__main__':
+    main()
